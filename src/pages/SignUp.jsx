@@ -70,8 +70,8 @@ export default function SingUp() {
     height: "400px",
     display: modalState ? "block" : "none",
     position: "absolute",
-    top: "25%",
-    right: "25%",
+    top: "30%",
+    right: "40%",
     zIndex: "15",
   };
 
