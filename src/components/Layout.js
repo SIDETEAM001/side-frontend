@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
-import LogIn from "./Login";
+import AccountModal from "./AccountModal";
 
 
 
@@ -19,7 +19,7 @@ export default function Layout(){
                 </div>
             </MenuSection>
             <UserSection>
-                <LogIn />
+                <AccountModal />
             </UserSection>
         </Header>
 

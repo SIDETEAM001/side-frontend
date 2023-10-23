@@ -2,96 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import Address from "../components/Address";
-
-const MembershipSection = styled.section`
-    width: 100%;
-    height: calc(100vh - 41px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    span{
-        display: block;
-        font-size: 10px;
-        color: var(--tpGray);
-        /* line-height: 50px; */
-    }
-    ul{
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    li{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    li:last-of-type{
-        position: relative;
-    }
-
-    & .validationCheckBoxContainer{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-`;
-
-const Input = styled.input`
-    width: 361px;
-    height: 74px;
-    box-sizing: border-box;
-    padding: 0 15px;
-    border: 1px solid ${ (props)=> props.border_color || `var(--color-lightPink)`};
-    border-radius: 8px;
-
-    &::placeholder{
-        color: var(--color-lightPink);
-        font-size: 16px;
-    }
-`;
-
-const ValidationCheckBox = styled.div`
-    padding: 5px;
-    border-radius: 8px;
-    background-color: 
-        ${ (props) => props.background_color || `var(--color-9gray)` };
-`;
-
-const FindAddressesButton = styled.div`
-    width: 71px;
-    height: 34px;
-    background-color: var(--color-mainPink);
-    border-radius: 8px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    right: 10px;
-    top: calc(74px / 2);
-    transform: translateY(-50%);
-
-    cursor: pointer;
-`;
-
-const SignUpButton = styled.button`
-    background-color: ${ (props) => props.is_ok || "var(--color-9gray)"};
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--tpGray);
-
-    cursor: pointer;
-`;
 
 
 export default function Member(){
@@ -122,19 +32,11 @@ export default function Member(){
     // 유효성 체크 박스 색상 변경
     const [changeBgc, setChangeBgc] = useState(["", "", "", "", "var(--color-mainPink)"]);
 
-    // 주소 찾기 팝업창 관리
-    const [openPostcode, setOpenPostcode] = useState(false);
-
-    // 주소 상태관리
-    const [address, setAddress] = useState("");
-    // 상세주소 상태관리
-    const [extraAddress, setExtraAddress] = useState();
-
-    // 포커스 옮기기 위한 작명
-    const focusRef = useRef();
-
     // 가입하기 버튼 색상 변경
     const [isOk, setIsOk] = useState("");
+
+    // 추가 정보 입력 화면 상태 - true : 보여주기 / false : 숨기기
+    const [showAddInfoScreen, setShowAddInfoScreen] = useState(false);
 
 
 
@@ -155,18 +57,11 @@ export default function Member(){
         }
     };
 
-    // 팝업창 오픈 함수
-    const openPopup = () => {
-        setOpenPostcode(!openPostcode);
-    };
 
     useEffect(()=>{
-        // 만약 주소 state변수가 비어있지 않다면 (=주소를 찾아 넣었다면) 상세주소 박스로 포커스 옮기기
-        if(address != "") focusRef.current.focus();
-
         // 전체 유효성 검사 통과한다면 '가입하기'버튼 색상 바뀌기
         totalValid();
-    }, [address, userIdError, passwordError, checkedPasswordError, phoneNumberError]);
+    }, [userIdError, passwordError, checkedPasswordError, phoneNumberError]);
 
 
 
@@ -426,98 +321,203 @@ export default function Member(){
         // 전체 유효성 검사 통과시
         if(totalValid()) {
             console.log("전체 유효성 검사 통과함!");
+            
         }
         else{
             console.log("전체 유효성 검사 불통과!");
         }
     };
 
+    // 클릭시 추가 정보 입력란 열기
+    const handleOpenAddInfo = ()=>{
+        console.log("추가정보 기입란 열기");
+
+        setShowAddInfoScreen(true);
+    };
+
 
 
 
     return(
+        <>
         <MembershipSection>
             <form method="POST" action="/">
-                <ul>
-                    {/* 아이디 */}
-                    <li>
-                        <Input 
-                            autoFocus
+                {
+                    // 필수 정보 입력란
+                    !showAddInfoScreen ? 
+                    <RequiredInfo>
+                        {/* 아이디 */}
+                        <li>
+                            <Input 
+                                autoFocus
+                                type="text" 
+                                placeholder="abcd@gmail.com" 
+                                value={userId}
+                                onChange={validateUserId}
+                                $border_color={changeColor[0]} />
+                            <span>*아이디는 이메일 형식으로 작성해주세요</span>
+                        </li>
+                        {/* 비밀번호 */}
+                        <li>
+                            <Input 
+                                type="text" 
+                                placeholder="비밀번호를 입력해주세요" 
+                                value={password}
+                                onChange={validatePassword}
+                                $border_color={changeColor[1]} />
+                            <span>*비밀번호는 영어, 숫자, 특수문자를 포함한 6자리 이상으로 설정해주세요</span>
+                            <div className="validationCheckBoxContainer">
+                                <ValidationCheckBox $background_color={changeBgc[0]}>영어</ValidationCheckBox>
+                                <ValidationCheckBox $background_color={changeBgc[1]}>숫자</ValidationCheckBox>
+                                <ValidationCheckBox $background_color={changeBgc[2]}>특수문자</ValidationCheckBox>
+                                <ValidationCheckBox $background_color={changeBgc[3]}>6자리 이상</ValidationCheckBox>
+                            </div>
+                        </li>
+                        {/* 비밀번호 확인 */}
+                        <li>
+                            <Input 
+                                type="password" 
+                                placeholder="비밀번호를 한번 더 입력해주세요" 
+                                value={checkedPassword} 
+                                onChange={validateCheckedPassword}
+                                $border_color={changeColor[2]} />
+                            <div className="validationCheckBoxContainer">
+                            <ValidationCheckBox className="validationChkPwBox" $background_color={changeBgc[4]}>비밀번호가 일치하지 않습니다.</ValidationCheckBox>
+                            </div>
+                        </li>
+                        {/* 전화번호 */}
+                        <li>
+                            <Input 
                             type="text" 
-                            placeholder="abcd@gmail.com" 
-                            value={userId}
-                            onChange={validateUserId}
-                            border_color={changeColor[0]} />
-                        <span>*아이디는 이메일 형식으로 작성해주세요</span>
-                    </li>
-                    {/* 비밀번호 */}
-                    <li>
-                        <Input 
-                            type="text" 
-                            placeholder="비밀번호를 입력해주세요" 
-                            value={password}
-                            onChange={validatePassword}
-                            $border_color={changeColor[1]} />
-                        <span>*비밀번호는 영어, 숫자, 특수문자를 포함한 6자리 이상으로 설정해주세요</span>
-                        <div className="validationCheckBoxContainer">
-                            <ValidationCheckBox background_color={changeBgc[0]}>영어</ValidationCheckBox>
-                            <ValidationCheckBox background_color={changeBgc[1]}>숫자</ValidationCheckBox>
-                            <ValidationCheckBox background_color={changeBgc[2]}>특수문자</ValidationCheckBox>
-                            <ValidationCheckBox background_color={changeBgc[3]}>6자리 이상</ValidationCheckBox>
-                        </div>
-                    </li>
-                    {/* 비밀번호 확인 */}
-                    <li>
-                        <Input 
-                            type="password" 
-                            placeholder="비밀번호를 한번 더 입력해주세요" 
-                            value={checkedPassword} 
-                            onChange={validateCheckedPassword}
-                            border_color={changeColor[2]} />
-                        <div className="validationCheckBoxContainer">
-                        <ValidationCheckBox className="validationChkPwBox" background_color={changeBgc[4]}>비밀번호가 일치하지 않습니다.</ValidationCheckBox>
-                        </div>
-                    </li>
-                    {/* 전화번호 */}
-                    <li>
-                        <Input 
-                        type="text" 
-                        maxLength={13}
-                        placeholder="010-0000-0000" 
-                        value={phoneNumber}
-                        onChange={validatePhoneNumber}
-                        border_color={changeColor[3]} />
-                        <span>*전화번호를 입력해주세요</span>
-                    </li>
-                    {/* 주소 */}
-                    <li>
-                        <Input 
-                            readOnly 
-                            type="text" 
-                            placeholder="도로명/지번" 
-                            value={address || ""} 
-                            />
-                        <FindAddressesButton onClick={openPopup}>주소 찾기</FindAddressesButton>
-                        <Input 
-                            type="text" 
-                            placeholder="상세 주소" 
-                            value={extraAddress}
-                            ref={focusRef} />
-                        <span>*(선택)자택 주소를 입력해주세요</span>
-                        { openPostcode &&
-                            <Address 
-                                address={address} 
-                                setAddress={setAddress}
-                                setOpenPostcode={setOpenPostcode} />
-                        }
-                    </li>
-                    {/* 가입하기 버튼 */}
-                    <SignUpButton 
-                        onClick={onSubmit} 
-                        is_ok={isOk}
-                        >가입하기</SignUpButton>
-                </ul>
+                            maxLength={13}
+                            placeholder="010-0000-0000" 
+                            value={phoneNumber}
+                            onChange={validatePhoneNumber}
+                            $border_color={changeColor[3]} />
+                            <span>*전화번호를 입력해주세요</span>
+                        </li>
+                        {/* 다음페이지 이동 버튼 */}
+                        <SignUpButton 
+                            onClick={handleOpenAddInfo} 
+                            >다음</SignUpButton>
+                    </RequiredInfo> :
+                    // 추가 정보 입력란
+                    <AdditionalInfoSection>
+                        {/* 닉네임 */}
+                        <li>
+                            <span>닉네임을 입력해주세요</span>
+                            <input />
+                        </li>
+                        {/* 생년월일 */}
+                        <li>
+                            <span>생년월일</span>
+                            <input />
+                        </li>
+                        {/* 성별 */}
+                        <li>
+                            <span>성별</span>
+                            <input />
+                        </li>
+                        {/* 직무 */}
+                        <li>
+                            <span>직무</span>
+                            <input />
+                        </li>
+                        {/* 회원가입 버튼 */}
+                        <SignUpButton 
+                            onClick={onSubmit} 
+                            $is_ok={isOk}
+                            >가입하기</SignUpButton>
+                    </AdditionalInfoSection>
+                }
             </form>
         </MembershipSection>
+        </>
     )
 }
+
+
+
+
+const MembershipSection = styled.section`
+    width: 500px;
+    height: 700px;
+    margin: 80px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-9gray);
+
+    span{
+        display: block;
+        font-size: 10px;
+        color: var(--tpGray);
+        /* line-height: 50px; */
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    li{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    li:last-of-type{
+        position: relative;
+    }
+
+    & .validationCheckBoxContainer{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+`;
+
+const RequiredInfo = styled.ul`
+
+`;
+
+const Input = styled.input`
+    width: 361px;
+    height: 74px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    border: 1px solid ${ (props)=> props.border_color || `var(--color-lightPink)`};
+    border-radius: 8px;
+
+    &::placeholder{
+        color: var(--color-lightPink);
+        font-size: 16px;
+    }
+`;
+
+const ValidationCheckBox = styled.div`
+    padding: 5px;
+    border-radius: 8px;
+    background-color: 
+        ${ (props) => props.background_color || `var(--color-9gray)` };
+`;
+
+
+const SignUpButton = styled.button`
+    background-color: ${ (props) => props.is_ok || "var(--color-9gray)"};
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--tpGray);
+
+    cursor: pointer;
+`;
+
+
+const AdditionalInfoSection = styled.ul`
+
+`;
