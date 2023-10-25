@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ColorDiv,
   HeaderDiv,
@@ -22,7 +24,46 @@ import {
   Magnify,
   Wrapper,
 } from "../style/HeaderStyle";
+
 export default function Header() {
+  const navigate = useNavigate();
+  const [develop, setDevelop] = useState(false);
+  const [hobby, setHobby] = useState(false);
+  const [place, setPlace] = useState(false);
+  const [qna, setQna] = useState(false);
+
+  const developOnClick = () => {
+    setDevelop(true);
+    setHobby(false);
+    setPlace(false);
+    setQna(false);
+    navigate("/develop");
+  };
+
+  const hobbyOnClick = () => {
+    setHobby(true);
+    setDevelop(false);
+    setPlace(false);
+    setQna(false);
+    navigate("/hobby");
+  };
+
+  const placeOnClick = () => {
+    setPlace(true);
+    setHobby(false);
+    setDevelop(false);
+    setQna(false);
+    navigate("/detail");
+  };
+
+  const qnaOnClick = () => {
+    setQna(true);
+    setHobby(false);
+    setPlace(false);
+    setDevelop(false);
+    navigate("/detail");
+  };
+
   return (
     <Wrapper>
       <ColorDiv />
@@ -31,16 +72,24 @@ export default function Header() {
           <LogoP>로고</LogoP>
         </Logo>
         <DevelopDiv>
-          <Develop>자기계발 모임</Develop>
+          <Develop $on={develop} onClick={developOnClick}>
+            자기계발 모임
+          </Develop>
         </DevelopDiv>
         <HobbyDiv>
-          <HobbyP>취미 모임</HobbyP>
+          <HobbyP $on={hobby} onClick={hobbyOnClick}>
+            취미 모임
+          </HobbyP>
         </HobbyDiv>
         <PlaceDiv>
-          <PlaceP>플레이스</PlaceP>
+          <PlaceP $on={place} onClick={placeOnClick}>
+            플레이스
+          </PlaceP>
         </PlaceDiv>
         <QNADiv>
-          <QNAP>Q&A</QNAP>
+          <QNAP $on={qna} onClick={qnaOnClick}>
+            Q&A
+          </QNAP>
         </QNADiv>
         <InputDiv>
           <Input />
