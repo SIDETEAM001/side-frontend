@@ -27,40 +27,25 @@ import {
 
 export default function Header() {
   const navigate = useNavigate();
-  const [develop, setDevelop] = useState(false);
-  const [hobby, setHobby] = useState(false);
-  const [place, setPlace] = useState(false);
-  const [qna, setQna] = useState(false);
+  const [selected, setSelected] = useState(-1);
 
   const developOnClick = () => {
-    setDevelop(true);
-    setHobby(false);
-    setPlace(false);
-    setQna(false);
+    setSelected(1);
     navigate("/develop");
   };
 
   const hobbyOnClick = () => {
-    setHobby(true);
-    setDevelop(false);
-    setPlace(false);
-    setQna(false);
+    setSelected(2);
     navigate("/hobby");
   };
 
   const placeOnClick = () => {
-    setPlace(true);
-    setHobby(false);
-    setDevelop(false);
-    setQna(false);
+    setSelected(3);
     navigate("/detail");
   };
 
   const qnaOnClick = () => {
-    setQna(true);
-    setHobby(false);
-    setPlace(false);
-    setDevelop(false);
+    setSelected(4);
     navigate("/detail");
   };
 
@@ -72,22 +57,22 @@ export default function Header() {
           <LogoP>로고</LogoP>
         </Logo>
         <DevelopDiv>
-          <Develop $on={develop} onClick={developOnClick}>
+          <Develop $on={selected === 1} onClick={developOnClick}>
             자기계발 모임
           </Develop>
         </DevelopDiv>
         <HobbyDiv>
-          <HobbyP $on={hobby} onClick={hobbyOnClick}>
+          <HobbyP $on={selected === 2} onClick={hobbyOnClick}>
             취미 모임
           </HobbyP>
         </HobbyDiv>
         <PlaceDiv>
-          <PlaceP $on={place} onClick={placeOnClick}>
+          <PlaceP $on={selected === 3} onClick={placeOnClick}>
             플레이스
           </PlaceP>
         </PlaceDiv>
         <QNADiv>
-          <QNAP $on={qna} onClick={qnaOnClick}>
+          <QNAP $on={selected === 4} onClick={qnaOnClick}>
             Q&A
           </QNAP>
         </QNADiv>
