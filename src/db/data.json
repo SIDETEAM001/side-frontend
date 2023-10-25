@@ -1,0 +1,80 @@
+{
+  "surroundings": [
+    {
+      "theme": "surroundings",
+      "subject": "내 주변에 있는 클래스들 확인하러 가기 >",
+      "imgSrc": "",
+      "title": "ㅇㅇ 헬스",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "surroundings",
+      "subject": "내 주변에 있는 클래스들 확인하러 가기 >",
+      "imgSrc": "",
+      "title": "ㅁㅁ 기타학원",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "surroundings",
+      "subject": "내 주변에 있는 클래스들 확인하러 가기 >",
+      "imgSrc": "",
+      "title": "ㄴㄴ 공방",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "surroundings",
+      "subject": "내 주변에 있는 클래스들 확인하러 가기 >",
+      "imgSrc": "",
+      "title": "ㅎㅎ 필라테스",
+      "location": "",
+      "hashTag": ""
+    }
+  ],
+  "recommendation": [
+    {
+      "theme": "recommendation",
+      "subject": "이런 취미생활은 어때요? >",
+      "imgSrc": "",
+      "title": "토익 스터디",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "recommendation",
+      "subject": "이런 취미생활은 어때요? >",
+      "imgSrc": "",
+      "title": "[백엔드] 사이드 플젝 모집",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "recommendation",
+      "subject": "이런 취미생활은 어때요? >",
+      "imgSrc": "",
+      "title": "사이드 프로젝트",
+      "location": "",
+      "hashTag": ""
+    },
+    {
+      "theme": "recommendation",
+      "subject": "이런 취미생활은 어때요? >",
+      "imgSrc": "",
+      "title": "LG 공채 스터디",
+      "location": "",
+      "hashTag": ""
+    }
+  ],
+  "hotIssue": [
+    {
+      "theme": "hotIssue",
+      "subject": "HOT! 사람들과 함께 관련 모임에도 참여해보세요! >",
+      "imgSrc": "",
+      "title": "",
+      "location": "",
+      "hashTag": ""
+    }
+  ]
+}
