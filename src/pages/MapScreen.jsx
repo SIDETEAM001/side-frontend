@@ -25,7 +25,7 @@ const OpenHobbyListBox = styled.button`
   position: fixed;
   bottom: 10%;
   left: 50%;
-  z-index: 10;
+  z-index: 10; 
   transform: translateX(-50%);
   background-color: #d3d3d3;
   border-radius: 10px;

@@ -145,7 +145,12 @@ export default function Hoppy(){
         <CurrentLocationBox>📍현재 위치 동이름</CurrentLocationBox>
       </Wrapper>
       <Wrapper>
-        <div>필터박스</div>
+        <div>
+          필터박스
+          <ul>
+            <li></li>
+          </ul>
+        </div>
       </Wrapper>
       <Section>
         {
