@@ -46,20 +46,26 @@ export const DevelopDiv = styled.div`
 `;
 
 export const Develop = styled(LogoP)`
-  color: #000;
+  font-size: 25px;
+  cursor: pointer;
+  color: ${(props) => (props.$on ? "black" : "gray")};
   font-family: Inter;
 `;
 
 export const HobbyP = styled.p`
+  cursor: pointer;
   color: #a6a6a6;
   font-size: 25px;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
   letter-spacing: -0.24px;
+  color: ${(props) => (props.$on ? "black" : "gray")};
 `;
 
-export const PlaceP = styled(HobbyP)``;
+export const PlaceP = styled(HobbyP)`
+  color: ${(props) => (props.$on ? "black" : "gray")};
+`;
 export const PlaceDiv = styled(DevelopDiv)``;
 export const HobbyDiv = styled(DevelopDiv)``;
 export const QNADiv = styled(DevelopDiv)``;
@@ -73,6 +79,8 @@ export const QNAP = styled.p`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.24px;
+  cursor: pointer;
+  color: ${(props) => (props.$on ? "black" : "gray")};
 `;
 
 export const InputDiv = styled.div`

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   ColorDiv,
   HeaderDiv,
@@ -22,7 +24,46 @@ import {
   Magnify,
   Wrapper,
 } from "../style/HeaderStyle";
+
 export default function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selected, setSelected] = useState(-1);
+
+  useEffect(() => {
+    const pageLocation = location.pathname;
+    if (pageLocation === "/develop") {
+      setSelected(1);
+    } else if (pageLocation === "/hobby") {
+      setSelected(2);
+    }
+    //  else if (pageLocation === "/") {
+    //   setSelected(3);
+    // } else if (pageLocation === "/") {
+    //   setSelected(4);
+    // }
+  }, [location]);
+
+  const developOnClick = () => {
+    setSelected(1);
+    navigate("/develop");
+  };
+
+  const hobbyOnClick = () => {
+    setSelected(2);
+    navigate("/hobby");
+  };
+
+  const placeOnClick = () => {
+    setSelected(3);
+    navigate("/detail");
+  };
+
+  const qnaOnClick = () => {
+    setSelected(4);
+    navigate("/detail");
+  };
+
   return (
     <Wrapper>
       <ColorDiv />
@@ -31,16 +72,24 @@ export default function Header() {
           <LogoP>로고</LogoP>
         </Logo>
         <DevelopDiv>
-          <Develop>자기계발 모임</Develop>
+          <Develop $on={selected === 1} onClick={developOnClick}>
+            자기계발 모임
+          </Develop>
         </DevelopDiv>
         <HobbyDiv>
-          <HobbyP>취미 모임</HobbyP>
+          <HobbyP $on={selected === 2} onClick={hobbyOnClick}>
+            취미 모임
+          </HobbyP>
         </HobbyDiv>
         <PlaceDiv>
-          <PlaceP>플레이스</PlaceP>
+          <PlaceP $on={selected === 3} onClick={placeOnClick}>
+            플레이스
+          </PlaceP>
         </PlaceDiv>
         <QNADiv>
-          <QNAP>Q&A</QNAP>
+          <QNAP $on={selected === 4} onClick={qnaOnClick}>
+            Q&A
+          </QNAP>
         </QNADiv>
         <InputDiv>
           <Input />
