@@ -16,12 +16,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/place" element={<Place />} />
-//           <Route path="/hobby" element={<Hobby />} />
-          <Route path="/map" element={<MapScreen />} />
+        <Route path="/" element={<Layout />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/place" element={<Place />} />
+        <Route path="/map" element={<MapScreen />} />
         <Route path="/develop" element={<DetailDevelop />} />
         <Route path="/hobby" element={<DetailHobby />} />
         <Route path="/inform/:id" element={<DetailedInformation />} />
