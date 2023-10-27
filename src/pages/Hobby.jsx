@@ -147,9 +147,6 @@ export default function Hoppy(){
       <Wrapper>
         <div>
           필터박스
-          <ul>
-            <li></li>
-          </ul>
         </div>
       </Wrapper>
       <Section>
