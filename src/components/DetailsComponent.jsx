@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export const Img = styled.img``;
@@ -10,11 +11,13 @@ export const ImgAlter = styled.div`
 
 export const Outer = styled.div`
   margin: 10px;
+  cursor: pointer;
 `;
 
-export default function DetailsComponents({ title, place, count, tags }) {
+export default function DetailsComponents({ title, place, count, tags, id }) {
+  const navigate = useNavigate();
   return (
-    <Outer>
+    <Outer onClick={() => navigate(`/inform/${id}`)}>
       <div>
         {/* <Img alt="img" /> */}
         <ImgAlter />

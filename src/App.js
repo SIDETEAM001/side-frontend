@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp.jsx";
 import Header from "./components/Header";
 import DetailDevelop from "./pages/DetailDevelop";
 import DetailHobby from "./pages/DetailHobby";
+import DetailedInformation from "./pages/DetailedInformation";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/develop" element={<DetailDevelop />} />
         <Route path="/hobby" element={<DetailHobby />} />
+        <Route path="/inform/:id" element={<DetailedInformation />} />
       </Routes>
     </BrowserRouter>
   );

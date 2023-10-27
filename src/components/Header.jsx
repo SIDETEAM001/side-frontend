@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   ColorDiv,
   HeaderDiv,
@@ -27,7 +27,22 @@ import {
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selected, setSelected] = useState(-1);
+
+  useEffect(() => {
+    const pageLocation = location.pathname;
+    if (pageLocation === "/develop") {
+      setSelected(1);
+    } else if (pageLocation === "/hobby") {
+      setSelected(2);
+    }
+    //  else if (pageLocation === "/") {
+    //   setSelected(3);
+    // } else if (pageLocation === "/") {
+    //   setSelected(4);
+    // }
+  }, [location]);
 
   const developOnClick = () => {
     setSelected(1);
