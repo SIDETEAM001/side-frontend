@@ -30,6 +30,8 @@ export default function Layout() {
             <Link to="/">홈</Link>
           </div>
         </MenuSection>
+        <Link to="/hobby">취미모임</Link>
+        <Link to="/place">플레이스</Link>
         <UserSection>
           <div>
             <Link to="/login">로그인</Link>
