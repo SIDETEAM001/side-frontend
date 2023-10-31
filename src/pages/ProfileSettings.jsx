@@ -5,8 +5,7 @@ import { ReactComponent as JobIcon } from "../assets/jobIcon.svg";
 
 const Wrapper = styled.section`
   width: 485px;
-  /* 📌세로로도 중앙에 위치할 수 있도록 비슷한 위치에 오게끔 mt 설정 */
-  margin: 1vh auto;
+  margin: 5vh auto;
   color: #111111;
 
   &>form{
@@ -24,15 +23,11 @@ const StyledTitle = styled.h4`
 
   margin: 0;
   padding: 0;
-  border: 1px dashed red;
   line-height: 130%;
 `;
 
 // 라벨 공통 디자인
 const StyledLabel = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 5px;
   user-select: none;
   
   &:hover{
@@ -43,7 +38,7 @@ const StyledLabel = styled.label`
 const StyledField = styled.fieldset`
   width: 100%;
   margin: 0;
-  padding: 0px 10px 10px 0px;
+  padding: 0;
   border: none;
   
   &>legend{
@@ -52,14 +47,55 @@ const StyledField = styled.fieldset`
     font-weight: bold;
   }
 `;
-// 인풋 공통 디자인
-const StyledInput = styled.input`
+// 인풋 공통 디자인 : 라디오
+const StyledInput_Radio = styled.input.attrs(()=>({type: 'radio'}))`
   margin: 0;
   padding: 0;
 
   &:hover{
     cursor: pointer;
   }
+`;
+// 인풋 공통 디자인 : 텍스트
+const StyledInput_Text = styled.input.attrs(()=>({type: 'text'}))`
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid #E4E4E4;
+  border-radius: 16px;
+
+  &::placeholder{
+    font-size: 1rem;
+    color: #B5B5B5;
+  }
+`;
+
+
+
+// 닉네임 필드셋
+const NickNameField = styled(StyledField)``;
+// 닉네임 인풋
+const NickNameInput = styled(StyledInput_Text)``;
+// 닉네임 라벨
+const NickNameLabel = styled(StyledLabel)`
+  font-weight: bold;
+  font-size: 0%.87rem;
+  line-height: 140%;
+  letter-spacing: -0.3%;
+`;
+
+
+// 생년월일 필드셋
+const BirthField = styled(StyledField)``;
+// 생년월일 인풋
+const BirthInput = styled(StyledInput_Text)``;
+// 생년월일 라벨
+const BirthLabel = styled(StyledLabel)`
+  font-weight: bold;
+  font-size: 0%.87rem;
+  line-height: 140%;
+  letter-spacing: -0.3%;
 `;
 
 
@@ -68,12 +104,14 @@ const GenderField = styled(StyledField)`
   display: flex;
   gap: 24px;
 `;
-
 // 성별 라벨
-const GenderLabel = styled(StyledLabel)``;
-
+const GenderLabel = styled(StyledLabel)`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
 // 성별 라디오 버튼
-const GenderRadioButton = styled(StyledInput).attrs(()=>({type: 'radio'}))`
+const GenderRadioButton = styled(StyledInput_Radio)`
   appearance: none;
   vertical-align: text-bottom;
   position: relative;
@@ -101,6 +139,7 @@ const GenderRadioButton = styled(StyledInput).attrs(()=>({type: 'radio'}))`
   }
 `;
 
+
 // 구분선
 const DividingLine = styled.div`
   width: 100%;
@@ -108,30 +147,32 @@ const DividingLine = styled.div`
   background-color: #E4E4E4;
 `;
 
+
 // 직업 필드셋
 const JobField = styled(StyledField)`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 8px;
-
+  gap: 16px 10px;
 `;
-
 // 직업 라벨
 const JobLabel = styled(StyledLabel)`
   height: 40px;
   padding: 8px 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
   border: 1px solid #E4E4E4;
   border-radius: 20px;
 
-  gap: 8px;
   
   font-size: 14px;
   color: #111111;
 `;
-
 // 직업 라디오 버튼 : visually-hidden
-const JobRadioButton = styled.input.attrs(()=>({type: 'radio'}))` 
+const JobRadioButton = styled(StyledInput_Radio)` 
   position: absolute;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -140,7 +181,6 @@ const JobRadioButton = styled.input.attrs(()=>({type: 'radio'}))`
   white-space: nowrap;
   width: 1px;
 `;
-
 
 
 // 등록 버튼
@@ -160,14 +200,14 @@ export default function ProfileSettings(){
     <Wrapper>
       <form>
         <StyledTitle>프로필 설정</StyledTitle>
-        <div>
-          <label htmlFor="nickName">닉네임</label>
-          <input type="text" id="nickName" name="nickName" placeholder="닉네임을 입력해 주세요." />
-        </div>
-        <div>
-          <label htmlFor="birth">생년월일</label>
-          <input type="text" id="birth" name="birth" placeholder="생년월일 여섯자리를 입력해 주세요." />
-        </div>
+        <NickNameField>
+          <NickNameLabel htmlFor="nickName">닉네임</NickNameLabel>
+          <NickNameInput type="text" id="nickName" name="nickName" placeholder="닉네임을 입력해 주세요." />
+        </NickNameField>
+        <BirthField>
+          <BirthLabel htmlFor="birth">생년월일</BirthLabel>
+          <BirthInput type="text" id="birth" name="birth" placeholder="생년월일 여섯자리를 입력해 주세요." />
+        </BirthField>
         {/* ---------- 성별 ---------- */}
         <GenderField>
           <legend>성별</legend>
