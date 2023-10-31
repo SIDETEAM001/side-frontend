@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import DetailDevelop from "./pages/DetailDevelop";
 import DetailHobby from "./pages/DetailHobby";
 import DetailedInformation from "./pages/DetailedInformation";
+import ProfileSettings from "./pages/ProfileSettings";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/develop" element={<DetailDevelop />} />
         <Route path="/hobby" element={<DetailHobby />} />
         <Route path="/inform/:id" element={<DetailedInformation />} />
+        <Route path="/profile" element={<ProfileSettings />} />
       </Routes>
     </BrowserRouter>
   );

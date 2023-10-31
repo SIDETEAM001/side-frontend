@@ -24,24 +24,7 @@ export default function Layout() {
   return (
     <>
       {/* 헤더 */}
-      <Header>
-        <MenuSection>
-          <div>
-            <Link to="/">홈</Link>
-          </div>
-        </MenuSection>
-        <Link to="/hobby">취미모임</Link>
-        <Link to="/place">플레이스</Link>
-        <UserSection>
-          <div>
-            <Link to="/login">로그인</Link>
-          </div>
-          <div className="dividingLine">|</div>
-          <div>
-            <Link to="/signup">회원가입</Link>
-          </div>
-        </UserSection>
-      </Header>
+      <Header></Header>
 
       {/* 내용 보여주기 */}
       <Outlet />
