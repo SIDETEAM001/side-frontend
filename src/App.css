@@ -37,7 +37,10 @@
     }
 }
 
-
+/* Pretendard 폰트 적용 */
+* {
+    font-family: Pretendard,'Noto Sans KR', sans-serif;
+}
 
 #mapwrap {
     position: relative;
