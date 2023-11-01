@@ -169,19 +169,25 @@ const JobLabel = styled(StyledLabel)`
 
   
   font-size: 14px;
+  font-weight: bold;
   color: #111111;
 `;
 // 직업 라디오 버튼 : visually-hidden
 const JobRadioButton = styled(StyledInput_Radio)` 
+  width: 1px;
+  height: 1px;
   position: absolute;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  height: 1px;
   overflow: hidden;
   white-space: nowrap;
-  width: 1px;
-`;
 
+  &:checked + label{
+    border: 1px solid #68be12;
+    /* svg 요소의 stroke에 'currentColor'을 넣으면 color 색상으로 변경됨 */
+    color: #68be12;
+  }
+`;
 
 // 등록 버튼
 const ProfileSubmitButton = styled.button`
@@ -195,6 +201,30 @@ const ProfileSubmitButton = styled.button`
 `;
 
 export default function ProfileSettings(){
+  const jobList = [
+    "기획, 전략, 경영",
+    "개발",
+    "데이터, AI, ML",
+    "마케팅, 광고홍보",
+    "디자인",
+    "미디어, 전시, 예술",
+    "유통, 물류",
+    "금융",
+    "재무, 회계, 세무",
+    "인사, 노무",
+    "영업, 고객",
+    "의료, 바이오, 제약",
+    "연구, RND",
+    "엔지니어링, 설계",
+    "품질, 생산",
+    "교육",
+    "체육, 스포츠직",
+    "법률, 법무직",
+    "공공, 복지",
+    "서비스직",
+    "기타"
+  ];
+
   return(
     <>
     <Wrapper>
@@ -225,111 +255,17 @@ export default function ProfileSettings(){
         {/* ---------- 직무선택 ---------- */}
         <JobField>
           <legend>직무선택</legend>
-          <JobLabel htmlFor="job01">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job01" value="job01" />
-            기획, 전략, 경영
-          </JobLabel>
-          <JobLabel htmlFor="job02">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job02" value="job02" />
-            개발
-          </JobLabel>
-          <JobLabel htmlFor="job03">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job03" value="job03" />
-            데이터, AI, ML
-          </JobLabel>
-          <JobLabel htmlFor="job04">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job04" value="job04" />
-            마케팅, 광고홍보
-          </JobLabel>
-          <JobLabel htmlFor="job05">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job05" value="job05" />
-            디자인
-          </JobLabel>
-          <JobLabel htmlFor="job06">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job06" value="job06" />
-            미디어, 전시, 예술
-          </JobLabel>
-          <JobLabel htmlFor="job07">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job07" value="" />
-            유통, 물류
-          </JobLabel>
-          <JobLabel htmlFor="job08">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job08" value="" />
-            금융
-          </JobLabel>
-          <JobLabel htmlFor="job09">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job09" value="" />
-            재무, 회계, 세무
-          </JobLabel>
-          <JobLabel htmlFor="job10">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job10" value="" />
-            인사, 노무
-          </JobLabel>
-          <JobLabel htmlFor="job11">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job11" value="" />
-            영업, 고객
-          </JobLabel>
-          <JobLabel htmlFor="job12">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job12" value="" />
-            의료, 바이오, 제약
-          </JobLabel>
-          <JobLabel htmlFor="job13">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job13" value="" />
-            연구, RND
-          </JobLabel>
-          <JobLabel htmlFor="job14">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job14" value="" />
-            엔지니어링, 설계
-          </JobLabel>
-          <JobLabel htmlFor="job15">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job15" value="" />
-            품질, 생산
-          </JobLabel>
-          <JobLabel htmlFor="job16">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job16" value="" />
-            교육
-          </JobLabel>
-          <JobLabel htmlFor="job17">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job17" value="" />
-            체육, 스포츠직
-          </JobLabel>
-          <JobLabel htmlFor="job18">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job18" value="" />
-            법률, 법무직
-          </JobLabel>
-          <JobLabel htmlFor="job19">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job19" value="" />
-            공공, 복지
-          </JobLabel>
-          <JobLabel htmlFor="job20">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job20" value="" />
-            서비스직
-          </JobLabel>
-          <JobLabel htmlFor="job21">
-            <JobIcon />
-            <JobRadioButton type="raido" name="job" id="job21" value="" />
-            기타
-          </JobLabel>
+          {jobList.map((val, idx)=>{
+            return(
+              <div key={idx}>
+                <JobRadioButton type="raido" name="job" id={val} value={val} />
+                <JobLabel htmlFor={val}>
+                  <JobIcon />
+                  {val}
+                </JobLabel>
+              </div>
+            )
+          })}
         </JobField>
         <ProfileSubmitButton type="submit">등록하기</ProfileSubmitButton>
       </form>
