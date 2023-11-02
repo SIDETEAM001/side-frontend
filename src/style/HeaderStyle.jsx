@@ -3,11 +3,17 @@ import styled from "styled-components";
 export const Wrapper = styled.header`
   min-width: 1980px;
   overflow-x: hidden;
+  border-bottom: 1px solid var(--gray-gr-10, #e4e4e4);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
 `;
 
 export const HeaderDiv = styled.div`
+  padding: 16px;
   display: flex;
-  margin-top: 22px;
+  align-items: center;
   margin-left: 175px;
   border-radius: 0px;
   min-width: 1980px;
