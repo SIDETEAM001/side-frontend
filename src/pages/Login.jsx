@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   OuterWrapper,
   Wrapper,
@@ -29,6 +30,7 @@ import {
 } from "../style/LoginStyle";
 
 export default function Login() {
+  const navigate = useNavigate();
   return (
     <OuterWrapper>
       <Wrapper>
@@ -58,7 +60,9 @@ export default function Login() {
           <div>
             <SmallSpan>이메일/비밀번호 찾기</SmallSpan>
             <DivideSpan>|</DivideSpan>
-            <SmallSpan>이메일로 회원가입</SmallSpan>
+            <SmallSpan onClick={() => navigate("/agree")}>
+              이메일로 회원가입
+            </SmallSpan>
           </div>
           <OrDiv>
             <Hr />
