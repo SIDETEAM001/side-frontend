@@ -55,8 +55,7 @@ export default function Login() {
               <SaveSpan>아이디 저장</SaveSpan>
             </Label>
           </SaveDiv>
-          <LoginBox>로그인</LoginBox>
-          <LoginBox2>가입하기</LoginBox2>
+          <LoginBox2>로그인</LoginBox2>
           <div>
             <SmallSpan>이메일/비밀번호 찾기</SmallSpan>
             <DivideSpan>|</DivideSpan>
