@@ -66,7 +66,6 @@ export default function Header() {
 
   return (
     <Wrapper>
-      <ColorDiv />
       <HeaderDiv>
         <Logo>
           <LogoP>로고</LogoP>

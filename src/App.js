@@ -11,6 +11,8 @@ import DetailDevelop from "./pages/DetailDevelop";
 import DetailHobby from "./pages/DetailHobby";
 import DetailedInformation from "./pages/DetailedInformation";
 import ProfileSettings from "./pages/ProfileSettings";
+import AgreePage from "./pages/AgreePage";
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path="/hobby" element={<DetailHobby />} />
         <Route path="/inform/:id" element={<DetailedInformation />} />
         <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/agree" element={<AgreePage />} />
       </Routes>
     </BrowserRouter>
   );

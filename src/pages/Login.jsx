@@ -1,90 +1,91 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-export const Input = styled.input`
-  width: 403px;
-  height: 45px;
-  border: 1px solid #cecece;
-  margin: 16px;
-  padding-left: 16px;
-  padding-top: 14px;
-  padding-bottom: 13px;
-  padding-right: 16px;
-  border-radius: 8px;
-  outline: none;
-`;
-
-export const LoginBox = styled.div`
-  width: 403px;
-  height: 45px;
-  margin-top: 16px;
-  border-radius: 8px;
-  background: var(--mainPink, #ec8f8f);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-  text-align: center;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.333px;
-`;
-
-export const InputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const SignAndFindBox = styled.div`
-  width: 196px;
-  height: 45px;
-  border-radius: 8px;
-  background: var(--mainGreen, #a4e3b6);
-  margin-right: 11px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-  text-align: center;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.333px;
-`;
-
-export const SignUpWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 16px;
-  padding-left: 7px;
-`;
+import { useNavigate } from "react-router-dom";
+import {
+  OuterWrapper,
+  Wrapper,
+  TitleDiv,
+  Title2,
+  Title,
+  Title3,
+  InputBox,
+  InputAndSpanDiv,
+  InputSpan,
+  Input,
+  SaveDiv,
+  CheckBox,
+  SaveSpan,
+  LoginBox2,
+  LoginBox,
+  SmallSpan,
+  DivideSpan,
+  OrDiv,
+  Hr,
+  OrSpan,
+  ImgDiv,
+  Kakao,
+  KakaoDiv,
+  KakaoLoginSpan,
+  ImgWrapper,
+  ImgAndSpanDiv,
+  Label,
+} from "../style/LoginStyle";
 
 export default function Login() {
+  const navigate = useNavigate();
   return (
-    <>
+    <OuterWrapper>
       <Wrapper>
+        <TitleDiv>
+          <Title>퇴근하고 뭐하지?</Title>
+          <Title2>직장인 갓생</Title2>
+          <Title3>가치있는 정보가 모이는 직갓생에서</Title3>
+          <Title3>당신의 직장인 커뮤니티를 시작해보세요</Title3>
+        </TitleDiv>
         <InputBox>
-          <Input placeholder="아이디" />
-          <Input type="password" placeholder="비밀번호" />
-          <LoginBox>로그인</LoginBox>
-          <SignUpWrapper>
-            <SignAndFindBox>회원가입</SignAndFindBox>
-            <SignAndFindBox>아이디/비밀번호 찾기</SignAndFindBox>
-          </SignUpWrapper>
+          <InputAndSpanDiv>
+            <InputSpan>이메일</InputSpan>
+            <Input placeholder="이메일을 입력해 주세요" />
+          </InputAndSpanDiv>
+          <InputAndSpanDiv>
+            <InputSpan>비밀번호</InputSpan>
+            <Input type="password" placeholder="비밀번호를 입력해 주세요." />
+          </InputAndSpanDiv>
+          <SaveDiv>
+            <Label>
+              <CheckBox type="checkbox" />
+              <SaveSpan>아이디 저장</SaveSpan>
+            </Label>
+          </SaveDiv>
+          <LoginBox2>로그인</LoginBox2>
+          <div>
+            <SmallSpan>이메일/비밀번호 찾기</SmallSpan>
+            <DivideSpan>|</DivideSpan>
+            <SmallSpan onClick={() => navigate("/agree")}>
+              이메일로 회원가입
+            </SmallSpan>
+          </div>
+          <OrDiv>
+            <Hr />
+            <OrSpan>또는</OrSpan>
+            <Hr />
+          </OrDiv>
+          <ImgWrapper>
+            <ImgAndSpanDiv>
+              <ImgDiv>
+                <KakaoDiv src="/images/kakaoDiv.svg" alt="yellow" />
+                <Kakao src="/images/kakao.svg" alt="yellow" />
+              </ImgDiv>
+              <KakaoLoginSpan>카카오톡 로그인</KakaoLoginSpan>
+            </ImgAndSpanDiv>
+            <ImgAndSpanDiv>
+              <ImgDiv>
+                <KakaoDiv src="/images/appleDiv.svg" alt="yellow" />
+                <Kakao src="/images/apple.svg" alt="yellow" />
+              </ImgDiv>
+              <KakaoLoginSpan>애플 로그인</KakaoLoginSpan>
+            </ImgAndSpanDiv>
+          </ImgWrapper>
         </InputBox>
       </Wrapper>
-    </>
+    </OuterWrapper>
   );
 }
