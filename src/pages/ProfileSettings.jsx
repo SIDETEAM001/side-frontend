@@ -2,13 +2,12 @@
 import styled from "styled-components";
 import { ReactComponent as JobIcon } from "../assets/jobIcon.svg";
 
-
 const Wrapper = styled.section`
   width: 485px;
   margin: 5vh auto;
   color: #111111;
 
-  &>form{
+  & > form {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -29,8 +28,8 @@ const StyledTitle = styled.h4`
 // 라벨 공통 디자인
 const StyledLabel = styled.label`
   user-select: none;
-  
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -40,38 +39,36 @@ const StyledField = styled.fieldset`
   margin: 0;
   padding: 0;
   border: none;
-  
-  &>legend{
+
+  & > legend {
     margin-bottom: 12px;
     font-size: 1rem;
     font-weight: bold;
   }
 `;
 // 인풋 공통 디자인 : 라디오
-const StyledInput_Radio = styled.input.attrs(()=>({type: 'radio'}))`
+const StyledInput_Radio = styled.input.attrs(() => ({ type: "radio" }))`
   margin: 0;
   padding: 0;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;
 // 인풋 공통 디자인 : 텍스트
-const StyledInput_Text = styled.input.attrs(()=>({type: 'text'}))`
+const StyledInput_Text = styled.input.attrs(() => ({ type: "text" }))`
   width: 100%;
   height: 56px;
   margin: 0;
   padding: 8px 16px;
-  border: 1px solid #E4E4E4;
+  border: 1px solid #e4e4e4;
   border-radius: 16px;
 
-  &::placeholder{
+  &::placeholder {
     font-size: 1rem;
-    color: #B5B5B5;
+    color: #b5b5b5;
   }
 `;
-
-
 
 // 닉네임 필드셋
 const NickNameField = styled(StyledField)``;
@@ -85,7 +82,6 @@ const NickNameLabel = styled(StyledLabel)`
   letter-spacing: -0.3%;
 `;
 
-
 // 생년월일 필드셋
 const BirthField = styled(StyledField)``;
 // 생년월일 인풋
@@ -97,7 +93,6 @@ const BirthLabel = styled(StyledLabel)`
   line-height: 140%;
   letter-spacing: -0.3%;
 `;
-
 
 // 성별 필드셋
 const GenderField = styled(StyledField)`
@@ -122,10 +117,10 @@ const GenderRadioButton = styled(StyledInput_Radio)`
   border-radius: 50%;
 
   /* 체크될 때 */
-  &:checked{
+  &:checked {
     border: 1px solid #68be12;
   }
-  &:checked::after{
+  &:checked::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -139,14 +134,12 @@ const GenderRadioButton = styled(StyledInput_Radio)`
   }
 `;
 
-
 // 구분선
 const DividingLine = styled.div`
   width: 100%;
   height: 1px;
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
 `;
-
 
 // 직업 필드셋
 const JobField = styled(StyledField)`
@@ -163,17 +156,16 @@ const JobLabel = styled(StyledLabel)`
   display: flex;
   align-items: center;
   gap: 8px;
-  
-  border: 1px solid #E4E4E4;
+
+  border: 1px solid #e4e4e4;
   border-radius: 20px;
 
-  
   font-size: 14px;
   font-weight: bold;
   color: #111111;
 `;
 // 직업 라디오 버튼 : visually-hidden
-const JobRadioButton = styled(StyledInput_Radio)` 
+const JobRadioButton = styled(StyledInput_Radio)`
   width: 1px;
   height: 1px;
   position: absolute;
@@ -182,7 +174,7 @@ const JobRadioButton = styled(StyledInput_Radio)`
   overflow: hidden;
   white-space: nowrap;
 
-  &:checked + label{
+  &:checked + label {
     border: 1px solid #68be12;
     /* svg 요소의 stroke에 'currentColor'을 넣으면 color 색상으로 변경됨 */
     color: #68be12;
@@ -197,79 +189,103 @@ const ProfileSubmitButton = styled.button`
   border: none;
   border-radius: 16px;
   font-size: 1.125rem;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
+const jobList = [
+  "기획, 전략, 경영",
+  "개발",
+  "데이터, AI, ML",
+  "마케팅, 광고홍보",
+  "디자인",
+  "미디어, 전시, 예술",
+  "유통, 물류",
+  "금융",
+  "재무, 회계, 세무",
+  "인사, 노무",
+  "영업, 고객",
+  "의료, 바이오, 제약",
+  "연구, RND",
+  "엔지니어링, 설계",
+  "품질, 생산",
+  "교육",
+  "체육, 스포츠직",
+  "법률, 법무직",
+  "공공, 복지",
+  "서비스직",
+  "기타",
+];
 
-export default function ProfileSettings(){
-  const jobList = [
-    "기획, 전략, 경영",
-    "개발",
-    "데이터, AI, ML",
-    "마케팅, 광고홍보",
-    "디자인",
-    "미디어, 전시, 예술",
-    "유통, 물류",
-    "금융",
-    "재무, 회계, 세무",
-    "인사, 노무",
-    "영업, 고객",
-    "의료, 바이오, 제약",
-    "연구, RND",
-    "엔지니어링, 설계",
-    "품질, 생산",
-    "교육",
-    "체육, 스포츠직",
-    "법률, 법무직",
-    "공공, 복지",
-    "서비스직",
-    "기타"
-  ];
-
-  return(
+export default function ProfileSettings() {
+  return (
     <>
-    <Wrapper>
-      <form>
-        <StyledTitle>프로필 설정</StyledTitle>
-        <NickNameField>
-          <NickNameLabel htmlFor="nickName">닉네임</NickNameLabel>
-          <NickNameInput type="text" id="nickName" name="nickName" placeholder="닉네임을 입력해 주세요." />
-        </NickNameField>
-        <BirthField>
-          <BirthLabel htmlFor="birth">생년월일</BirthLabel>
-          <BirthInput type="text" id="birth" name="birth" placeholder="생년월일 여섯자리를 입력해 주세요." />
-        </BirthField>
-        {/* ---------- 성별 ---------- */}
-        <GenderField>
-          <legend>성별</legend>
-          <GenderLabel htmlFor="man">
-            <GenderRadioButton type="radio" name="gender" id="man" value="man" />
-            남자
-          </GenderLabel>
-          <GenderLabel htmlFor="woman">
-            <GenderRadioButton type="radio" name="gender" id="woman" value="woman" />
-            여자
-          </GenderLabel>
-        </GenderField>
-        {/* ---------- 구분선 ---------- */}
-        <DividingLine></DividingLine>
-        {/* ---------- 직무선택 ---------- */}
-        <JobField>
-          <legend>직무선택</legend>
-          {jobList.map((val, idx)=>{
-            return(
-              <div key={idx}>
-                <JobRadioButton type="raido" name="job" id={val} value={val} />
-                <JobLabel htmlFor={val}>
-                  <JobIcon />
-                  {val}
-                </JobLabel>
-              </div>
-            )
-          })}
-        </JobField>
-        <ProfileSubmitButton type="submit">등록하기</ProfileSubmitButton>
-      </form>
-    </Wrapper>
+      <Wrapper>
+        <form>
+          <StyledTitle>프로필 설정</StyledTitle>
+          <NickNameField>
+            <NickNameLabel htmlFor="nickName">닉네임</NickNameLabel>
+            <NickNameInput
+              type="text"
+              id="nickName"
+              name="nickName"
+              placeholder="닉네임을 입력해 주세요."
+            />
+          </NickNameField>
+          <BirthField>
+            <BirthLabel htmlFor="birth">생년월일</BirthLabel>
+            <BirthInput
+              type="text"
+              id="birth"
+              name="birth"
+              placeholder="생년월일 여섯자리를 입력해 주세요."
+            />
+          </BirthField>
+          {/* ---------- 성별 ---------- */}
+          <GenderField>
+            <legend>성별</legend>
+            <GenderLabel htmlFor="man">
+              <GenderRadioButton
+                type="radio"
+                name="gender"
+                id="man"
+                value="man"
+              />
+              남자
+            </GenderLabel>
+            <GenderLabel htmlFor="woman">
+              <GenderRadioButton
+                type="radio"
+                name="gender"
+                id="woman"
+                value="woman"
+              />
+              여자
+            </GenderLabel>
+          </GenderField>
+          {/* ---------- 구분선 ---------- */}
+          <DividingLine></DividingLine>
+          {/* ---------- 직무선택 ---------- */}
+          <JobField>
+            <legend>직무선택</legend>
+            {jobList.map((val, idx) => {
+              return (
+                <div key={idx}>
+                  <JobRadioButton
+                    type="raido"
+                    name="job"
+                    id={val}
+                    value={val}
+                  />
+                  <JobLabel htmlFor={val}>
+                    <JobIcon />
+                    {val}
+                  </JobLabel>
+                </div>
+              );
+            })}
+          </JobField>
+          <ProfileSubmitButton type="submit">등록하기</ProfileSubmitButton>
+        </form>
+      </Wrapper>
     </>
-  )
+  );
 }
