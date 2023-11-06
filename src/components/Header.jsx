@@ -56,7 +56,7 @@ export default function Header() {
 
   const placeOnClick = () => {
     setSelected(3);
-    navigate("/detail");
+    navigate("/place");
   };
 
   const qnaOnClick = () => {
