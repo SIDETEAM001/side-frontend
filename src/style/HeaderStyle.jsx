@@ -54,7 +54,7 @@ export const DevelopDiv = styled.div`
 export const Develop = styled(LogoP)`
   font-size: 25px;
   cursor: pointer;
-  color: ${(props) => (props.$on ? "black" : "gray")};
+  color: ${(props) => (props.$on ? "#51A300" : "black")};
   font-family: Inter;
 `;
 
@@ -66,11 +66,11 @@ export const HobbyP = styled.p`
   font-weight: 800;
   line-height: normal;
   letter-spacing: -0.24px;
-  color: ${(props) => (props.$on ? "black" : "gray")};
+  color: ${(props) => (props.$on ? "#51A300" : "black")};
 `;
 
 export const PlaceP = styled(HobbyP)`
-  color: ${(props) => (props.$on ? "black" : "gray")};
+  color: ${(props) => (props.$on ? "#51A300" : "black")};
 `;
 export const PlaceDiv = styled(DevelopDiv)``;
 export const HobbyDiv = styled(DevelopDiv)``;
@@ -86,7 +86,7 @@ export const QNAP = styled.p`
   line-height: normal;
   letter-spacing: -0.24px;
   cursor: pointer;
-  color: ${(props) => (props.$on ? "black" : "gray")};
+  color: ${(props) => (props.$on ? "#51A300" : "black")};
 `;
 
 export const InputDiv = styled.div`
@@ -105,6 +105,7 @@ export const Magnify = styled.img`
 `;
 
 export const Input = styled.input`
+  display: none;
   width: 649px;
   height: 56px;
   border-radius: 15px;

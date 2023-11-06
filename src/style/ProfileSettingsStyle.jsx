@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const Wrapper = styled.section`
+export const Wrapper = styled.section`
   width: 485px;
   margin: 5vh auto;
   color: #111111;
