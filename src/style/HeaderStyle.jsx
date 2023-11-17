@@ -1,133 +1,122 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
-  min-width: 1980px;
-  overflow-x: hidden;
-  border-bottom: 1px solid var(--gray-gr-10, #e4e4e4);
-  background: #fff;
-  display: flex;
-  align-items: center;
-  padding-left: 12px;
-`;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  /* border: 1px solid red; */
+  `;
 
 export const HeaderDiv = styled.div`
-  padding: 16px;
+  max-width: 1920px;
+  height: 80px;
+  padding: 16px 240px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  
+  /* border: 1px solid black; */
+`;
+export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 175px;
-  border-radius: 0px;
-  min-width: 1980px;
+  gap: 24px;
+
+  /* border: 1px dashed blue; */
 `;
-export const ColorDiv = styled.div`
-  min-width: 1980px;
-  background-color: #d9d9d9;
-  height: 50px;
-  border-bottom: 5px solid gray;
+export const AccountContainer = styled.div`
+  display: flex;
+  gap: 24px;
+
+  /* border: 1px dashed blue; */
 `;
+
+export const ColorDiv = styled.div``;
 
 export const Logo = styled.div`
   border-radius: 12px;
   background-color: #d9d9d9;
-  width: 149px;
-  height: 51px;
+  width: 132px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 23px;
-`;
+  `;
 
 export const LogoP = styled.p`
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.24px;
-`;
+  font-weight: bold;
+  font-size: 18px;
+  `;
 
 export const DevelopDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 34px;
-`;
-
-export const Develop = styled(LogoP)`
-  font-size: 25px;
+  `;
+export const Develop = styled.p`
+  font-weight: bold;
+  font-size: 18px;
+  /* line-height: 140%; */
+  /* letter-spacing: -0.3%; */
+  color: ${(props) => (props.$on ? "#51A300" : "#111111")};
   cursor: pointer;
-  color: ${(props) => (props.$on ? "#51A300" : "black")};
-  font-family: Inter;
+
+  /* border: 1px solid red; */
 `;
 
-export const HobbyP = styled.p`
-  cursor: pointer;
-  color: #a6a6a6;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  color: ${(props) => (props.$on ? "#51A300" : "black")};
-`;
-
-export const PlaceP = styled(HobbyP)`
-  color: ${(props) => (props.$on ? "#51A300" : "black")};
-`;
-export const PlaceDiv = styled(DevelopDiv)``;
 export const HobbyDiv = styled(DevelopDiv)``;
-export const QNADiv = styled(DevelopDiv)``;
+export const HobbyP = styled(Develop)``;
 
-export const QNAP = styled.p`
-  color: #a6a6a6;
-  text-align: center;
-  font-family: Inter;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.24px;
-  cursor: pointer;
-  color: ${(props) => (props.$on ? "#51A300" : "black")};
-`;
+export const PlaceDiv = styled(DevelopDiv)``;
+export const PlaceP = styled(Develop)``;
+
+export const QNADiv = styled(DevelopDiv)``;
+export const QNAP = styled(Develop)``;
+
+
 
 export const InputDiv = styled.div`
-  width: 649px;
-  height: 56px;
   position: relative;
-  margin-right: 119px;
+`;
+export const Input = styled.input`
+  width: 335px;
+  height: 48px;
+  padding: 8px 16px 8px 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 1px solid #e4e4e4;
+  ::placeholder{
+    font-size: 12px;
+    line-height: 140%;
+  }
 `;
 export const Magnify = styled.img`
-  width: 38.549px;
-  height: 38.936px;
-  top: 5px;
-  right: 12px;
+  width: 24px;
+  height: 24px;
   position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
   cursor: pointer;
 `;
 
-export const Input = styled.input`
-  display: none;
-  width: 649px;
-  height: 56px;
-  border-radius: 15px;
-  background-color: #ececec;
+export const MembershipDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 `;
 
-export const MessageDiv = styled(DevelopDiv)`
-  margin-right: 34px;
-`;
+export const MessageDiv = styled(DevelopDiv)``;
 export const MessageImg = styled.img`
-  width: 32px;
-  height: 33px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 `;
 
-export const AlarmDiv = styled(DevelopDiv)`
-  margin-right: 34px;
-`;
+export const AlarmDiv = styled(DevelopDiv)``;
 export const AlarmImg = styled(MessageImg)``;
+
 export const PersonDiv = styled(DevelopDiv)``;
-export const PersonImg = styled.img`
-  width: 30px;
-  height: 33px;
-  cursor: pointer;
-`;
+export const PersonImg = styled(MessageImg)``;
